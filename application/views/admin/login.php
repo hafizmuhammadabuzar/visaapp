@@ -1,7 +1,5 @@
 <div id="wrapper" class="login">
 
-    <!-- Navigation -->
-    <?php // include 'navigation.php'; ?>
 	<div class="container">
         <div class="row">
             <div class="col-lg-12">
