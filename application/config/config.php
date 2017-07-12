@@ -18,7 +18,7 @@
 */
 
 //live
-$config['base_url']	= 'http://localhost/projects/visaapp/';
+$config['base_url']	= 'http://localhost/visaapp/';
 //$config['base_url']	= 'http://wajibati.com/';
 /*
 |--------------------------------------------------------------------------
