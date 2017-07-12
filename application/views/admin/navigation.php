@@ -34,40 +34,29 @@
                     <a href="<?php echo base_url().'admin/dashboard'; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url().'admin/view_fridges'; ?>"><i class="fa fa-list-ul fa-fw"></i> Fridges</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> City Area Manager<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-map-o" aria-hidden="true"></i> Visa<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo base_url().'admin/add_manager'; ?>" <?php if($method=='add_manager') echo "class='active'" ?>>Add City Area Manager</a>
+                            <a href="<?php echo base_url().'admin/addVisa'; ?>" <?php if($method=='add_area') echo "class='active'" ?>>Add Visa</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url().'admin/view_managers'; ?>" <?php if($method=='view_managers') echo "class='active'" ?>>View City Area Managers</a>
+                            <a href="<?php echo base_url().'admin/viewVisas'; ?>" <?php if($method=='view_areas') echo "class='active'" ?>>View Visas</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="<?php echo base_url().'admin/view_sub_managers'; ?>"><i class="fa fa-list-ul fa-fw"></i> View Zone Managers</a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url().'admin/view_users'; ?>"><i class="fa fa-users fa-fw"></i> Users</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-map-o" aria-hidden="true"></i> Area<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-map-o" aria-hidden="true"></i> On-Arrival/Restriction<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo base_url().'admin/add_area'; ?>" <?php if($method=='add_area') echo "class='active'" ?>>Add Area</a>
+                            <a href="<?php echo base_url().'admin/add_arrival_restriction'; ?>" <?php if($method=='add_area') echo "class='active'" ?>>Add New</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url().'admin/view_areas'; ?>" <?php if($method=='view_areas') echo "class='active'" ?>>View Areas</a>
+                            <a href="<?php echo base_url().'admin/add_arrival_restriction'; ?>" <?php if($method=='view_areas') echo "class='active'" ?>>View</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="<?php echo base_url().'push_form'; ?>" <?php if($method=='push_form') echo "class='active'" ?>><i class="fa fa-bell fa-fw"></i> Push Notification</a>
+                    <!--<a href="<?php // echo base_url().'push_form'; ?>" <?php // if($method=='push_form') echo "class='active'" ?>><i class="fa fa-bell fa-fw"></i> Push Notification</a>-->
                 </li>
             </ul>
         </div>
