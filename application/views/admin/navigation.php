@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?php echo base_url().'admin/dashboard' ?>">Admin - Community Fridge</a>
+        <a class="navbar-brand" href="<?php echo base_url().'admin/dashboard' ?>">Admin - VISA APP</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -34,7 +34,7 @@
                     <a href="<?php echo base_url().'admin/dashboard'; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-map-o" aria-hidden="true"></i> Visa<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-cc-visa" aria-hidden="true"></i> Visa<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="<?php echo base_url().'admin/addVisa'; ?>" <?php if($method=='add_area') echo "class='active'" ?>>Add Visa</a>
@@ -45,13 +45,24 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-map-o" aria-hidden="true"></i> On-Arrival/Restriction<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-plane" aria-hidden="true"></i> On-Arrival / Restriction<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo base_url().'admin/add_arrival_restriction'; ?>" <?php if($method=='add_area') echo "class='active'" ?>>Add New</a>
+                            <a href="<?php echo base_url().'admin/addAr'; ?>" <?php if($method=='addAr') echo "class='active'" ?>>Add New</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url().'admin/add_arrival_restriction'; ?>" <?php if($method=='view_areas') echo "class='active'" ?>>View</a>
+                            <a href="<?php echo base_url().'admin/viewAR'; ?>" <?php if($method=='viewAr') echo "class='active'" ?>>View</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-globe" aria-hidden="true"></i> Country<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?php echo base_url().'admin/addCountry'; ?>" <?php if($method=='addCountry') echo "class='active'" ?>>Add Country</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url().'admin/viewCountry'; ?>" <?php if($method=='viewCountry') echo "class='active'" ?>>View Countries</a>
                         </li>
                     </ul>
                 </li>

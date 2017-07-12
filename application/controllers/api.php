@@ -49,7 +49,7 @@ class Api extends CI_Controller
             $result['countries'] = $countries;
         }
         else{
-            $result['status'] = success;
+            $result['status'] = error;
             $result['msg'] = 'No updates';
         }
         

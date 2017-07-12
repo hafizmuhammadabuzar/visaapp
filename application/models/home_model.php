@@ -47,4 +47,11 @@ class Home_model extends CI_Model
         $this->db->delete($table);
         return $this->db->affected_rows();
     }
+    
+    function updateVersion(){
+        
+        $date = date('Y-m-d H:i:s');
+        $this->db->query("update version set version = version + 1, updated_at = '$date'");
+        return $this->db->affected_rows();
+    }
 }

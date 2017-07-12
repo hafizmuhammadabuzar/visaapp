@@ -35,11 +35,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Description*</label>
-                                <textarea cols="10" rows="10" class="form-control" name="description" value="<?php echo $visa->description; ?>" required="required"></textarea>
+                                <textarea cols="10" rows="10" class="form-control" name="description" required="required"><?php echo $visa->description; ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Steps*</label>
-                                <textarea cols="10" rows="10" class="form-control" name="steps" value="<?php echo $visa->steps; ?>" required="required"></textarea>
+                                <textarea cols="10" rows="10" class="form-control" name="steps" required="required"><?php echo $visa->steps; ?></textarea>
                             </div>
                             <?php if(isset($visa)){ ?>
                             <input type="hidden" name="visa_id" value="<?php echo bin2hex($visa->id); ?>">

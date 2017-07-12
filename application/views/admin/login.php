@@ -5,11 +5,11 @@
             <div class="col-lg-12">
                 <div class="LoginBox">  
                     <h1 class="page-header">Login</h1>
-                    <?php echo $this->session->userdata('msg'); ?>
+                    <?php echo $this->session->userdata('msg'); $this->session->unset_userdata('msg'); ?>
                     <form action="<?php echo base_url('admin/login'); ?>" method="post">
                         <div class="form-group">
                             <label>Username:</label>
-                            <input type="text" name="username" required="required" />
+                            <input type="text" name="username" required="required" autofocus="true" />
                         </div>
                         <div class="form-group">
                             <label>Password:</label>
