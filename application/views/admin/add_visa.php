@@ -14,7 +14,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <?php $url = (isset($visa)) ? 'update_visa' : 'save_visa';
+                <?php $url = (isset($visa)) ? 'updateVisa' : 'saveVisa';
                 echo $page = (isset($visa)) ? 'Edit' : 'New'; ?> Visa
             </div>
             <div class="panel-body">
@@ -22,23 +22,27 @@
                     <div class="col-lg-6">
                         <form role="form" action="<?php echo base_url().'admin/'.$url; ?>" method="post">
                             <div class="form-group">
-                                <label>Area Name*</label>
-                                <input class="form-control" name="visa" value="<?php echo $visa->visa; ?>" required="required">
-                            </div>                         
-                            <div class="form-group">
-                                <label>Polygon*</label>
-                                <textvisa id="polygon" name="polygon" class="form-control" rows="5" placeholder="Latitude, Longitude <enter> Latitude, Longitude" required='required'><?php echo $visa->polygon; ?></textvisa>
+                                <label>Days*</label>
+                                <input class="form-control" name="days" value="<?php echo $visa->days; ?>" required="required">
                             </div>
                             <div class="form-group">
-                                <?php 
-                                $rest = ($visa->is_restricted == 1) ? 'checked="checked"' : ''; 
-                                $unrest = ($visa->is_restricted == 0 || !isset($visa)) ? 'checked="checked"' : ''; 
-                                ?>
-                                <input type="radio" id="restricted" name="restricted" class="form-control" <?php echo $rest; ?> value="1">Restricted
-                                <input type="radio" id="restricted" name="restricted" class="form-control" <?php echo $unrest; ?> value="0">Unrestricted
+                                <label>Type*</label>
+                                <input class="form-control" name="type" value="<?php echo $visa->type; ?>" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price*</label>
+                                <input class="form-control" name="price" value="<?php echo $visa->price; ?>" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label>Description*</label>
+                                <textarea cols="10" rows="10" class="form-control" name="description" value="<?php echo $visa->description; ?>" required="required"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Steps*</label>
+                                <textarea cols="10" rows="10" class="form-control" name="steps" value="<?php echo $visa->steps; ?>" required="required"></textarea>
                             </div>
                             <?php if(isset($visa)){ ?>
-                            <input type="hidden" name="visa_id" value="<?php echo bin2hex($visa->visa_id); ?>">
+                            <input type="hidden" name="visa_id" value="<?php echo bin2hex($visa->id); ?>">
                             <?php } ?>
                             <br/>
                             <button type="submit" class="btn btn-default" name="add">Submit</button>

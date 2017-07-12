@@ -12,6 +12,7 @@ class Admin extends CI_Controller
 
         $this->load->model('Home_model');
         $this->load->library('form_validation');
+        $this->load->library('session');
         
         define('error', 'Error');
         define('success', 'Success');
@@ -20,8 +21,8 @@ class Admin extends CI_Controller
     private function checkLogin(){
         
         if($this->session->userdata('admin_login') == FALSE){
-            $this->session->set_userdata('admin_login', 'You are not Logged In, Please login first');
-            redirect('admin/index');
+            $this->session->set_userdata('msg', 'You are not Logged In, Please login first');
+            redirect('admin');
         }
     }
     
@@ -32,8 +33,22 @@ class Admin extends CI_Controller
         $this->load->view('admin/footer');
     }
     
-    public function dashboard(){
-        
+    public function login(){
+
+        if($_POST['username'] == 'admin' && $_POST['password'] == 'admin'){
+            $this->session->set_userdata('admin_login', 'visa-admin');
+            redirect('admin/dashboard');
+        }
+    }
+    
+    public function logout(){
+
+        $this->session->unset_userdata('admin_login');
+        session_destroy();
+        redirect('admin');
+    }
+    
+    public function dashboard(){        
         $this->checkLogin();
         
         $this->load->view('admin/header');
@@ -62,23 +77,27 @@ class Admin extends CI_Controller
 
     public function saveVisa()
     {
-        $this->form_validation->set_rules('area', 'Area Name', 'required');
-        $this->form_validation->set_rules('polygon', 'Polygon', 'required');
+        $this->form_validation->set_rules('days', 'Days', 'required');
+        $this->form_validation->set_rules('type', 'Type', 'required');
+        $this->form_validation->set_rules('price', 'Price', 'required');
+        $this->form_validation->set_rules('description', 'Description', 'required');
+        $this->form_validation->set_rules('steps', 'Steps', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-
             redirect('admin/addVisa');
         }
         else {
-            $area_data = array(
-                'area' => $this->input->post('area'),
-                'polygon' => $this->input->post('polygon'),
-                'is_restricted' => $this->input->post('restricted'),
+            $data = array(
+                'days' => $this->input->post('days'),
+                'type' => $this->input->post('type'),
+                'price' => $this->input->post('price'),
+                'description' => $this->input->post('description'),
+                'steps' => $this->input->post('steps'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             );
 
-            $res = $this->Home_model->saveRecord('areas', $area_data);
+            $res = $this->Home_model->saveRecord('visas', $data);
 
             if ($res > 0) {
                 $this->session->set_userdata('msg', "Successfully saved!");
@@ -94,10 +113,9 @@ class Admin extends CI_Controller
     function editVisa($id)
     {
         $this->checkLogin();
-
         $id = pack("H*", $id);
-
-        $result['area'] = $this->Home_model->checkRecord('areas', array('area_id' => $id));
+        
+        $result['visa'] = $this->Home_model->checkRecord('visas', array('id' => $id));
         $this->load->view('admin/header');
         $this->load->view('admin/addVisa', $result);
         $this->load->view('admin/footer');
@@ -105,25 +123,29 @@ class Admin extends CI_Controller
 
     public function updateVisa()
     {
-
-        $this->form_validation->set_rules('area', 'Area Name', 'required');
-        $this->form_validation->set_rules('polygon', 'Polygon', 'required');
+        $this->form_validation->set_rules('days', 'Days', 'required');
+        $this->form_validation->set_rules('type', 'Type', 'required');
+        $this->form_validation->set_rules('price', 'Price', 'required');
+        $this->form_validation->set_rules('description', 'Description', 'required');
+        $this->form_validation->set_rules('steps', 'Steps', 'required');
 
         if ($this->form_validation->run() == FALSE) {
 
-            redirect('admin/editVisa/' . $_POST['area_id']);
+            redirect('admin/editVisa/' . $_POST['visa_id']);
         }
         else {
-            $id = pack("H*", $_POST['area_id']);
+            $id = pack("H*", $_POST['visa_id']);
 
-            $area_data = array(
-                'area' => $this->input->post('area'),
-                'polygon' => $this->input->post('polygon'),
-                'is_restricted' => $this->input->post('restricted'),
+            $data = array(
+                'days' => $this->input->post('days'),
+                'type' => $this->input->post('type'),
+                'price' => $this->input->post('price'),
+                'description' => $this->input->post('description'),
+                'steps' => $this->input->post('steps'),
                 'updated_at' => date('Y-m-d H:i:s'),
             );
 
-            $res = $this->Home_model->updateRecord('areas', ['area_id' => $id], $area_data);
+            $res = $this->Home_model->updateRecord('visas', ['id' => $id], $data);
 
             if ($res > 0) {
                 $this->session->set_userdata('msg', "Successfully saved!");
@@ -139,10 +161,9 @@ class Admin extends CI_Controller
     function deleteVisa($id)
     {
         $this->checkLogin();
-
         $id = pack("H*", $id);
 
-        $res = $this->Home_model->deleteRecord('areas', array('area_id' => $id));
+        $res = $this->Home_model->deleteRecord('visas', array('id' => $id));
         if ($res) {
             $this->session->set_userdata('msg', "Successfully Deleted!");
         }

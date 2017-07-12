@@ -17,9 +17,7 @@
 |
 */
 
-//live
-$config['base_url']	= 'http://localhost/visaapp/';
-//$config['base_url']	= 'http://wajibati.com/';
+$config['base_url']	= 'http://localhost/projects/visaapp/';
 /*
 |--------------------------------------------------------------------------
 | Index File
